@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
+	"log"
 	"module31/internal/entitis"
 )
 
@@ -34,7 +35,7 @@ func CounterPersonsCol(client *mongo.Client) {
 	collection := client.Database("Persons").Collection("Counter")
 	_, err := collection.InsertOne(context.TODO(), counter)
 	if err != nil {
-		fmt.Println("NotImplementedException")
+		log.Println("Обнаружен дубликат автоинкременции id в Persons.Counter")
 	}
 }
 
